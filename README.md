@@ -24,23 +24,23 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    git clone https://github.com/kevinFE63/drivblog.git
    ```
-2.  Setting Up (must be in root folder)
+2. Setting Up (must be in root folder)
 
-   ```sh
-   make setup
-   ```
+```sh
+make setup
+```
 
-   or if no Make
+or if no Make
 
-   ```sh
-   cd blog-frontend && npm i && npm run build && cd .. &&
-   docker compose build --no-cache --force-rm &&
-   docker compose up -d &&
-   docker exec blog-backend bash -c "composer update" &&
-   docker exec blog-backend bash -c "php artisan migrate" &&
-   docker exec blog-backend bash -c "php artisan db:seed" &&
-   start http://localhost:3000/
-   ```
+```sh
+cd blog-frontend && npm i && npm run build && cd .. &&
+docker compose build --no-cache --force-rm &&
+docker compose up -d &&
+docker exec blog-backend bash -c "composer update" &&
+docker exec blog-backend bash -c "php artisan migrate" &&
+docker exec blog-backend bash -c "php artisan db:seed" &&
+start http://localhost:3000/
+```
 
 4. Check URL
 
@@ -55,6 +55,11 @@ _Below is an example of how you can instruct your audience on installing and set
    Laravel : http://localhost:9000/
 
    Next: http://localhost:3000/
+
+5. If permission error
+   ```sh
+   sudo chown a+rw ./drivblog -R
+   ```
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
