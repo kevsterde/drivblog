@@ -8,14 +8,20 @@ services:
       - 9000:80
 
   mysql_db:
-    image: mysql:latest
+    image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: "%"
       MYSQL_DATABASE: laravel
       MYSQL_USER: laravel_user
       MYSQL_PASSWORD: laravel_password
     ports:
       - 3306:3306
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
   phpmyadmin:
     image: phpmyadmin:latest

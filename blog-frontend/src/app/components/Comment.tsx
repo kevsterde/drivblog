@@ -2,6 +2,7 @@
 import CommentData from "@/models/CommentData";
 import { useEffect, useState } from "react";
 import CardComment from "./CardComment";
+import LeaveCommentForm from "./LeaveCommentForm";
 
 const Comment = () => {
   const [guestID, setguestID] = useState("");
@@ -38,7 +39,7 @@ const Comment = () => {
     fetchData();
   }, []);
 
-  const handleReply = async (commentId: string, content: string) => {
+  const handleReply = async (commentId: string | null, content: string) => {
     setSending(true);
     const replyData = {
       parent_id: commentId,
@@ -72,11 +73,15 @@ const Comment = () => {
 
   function updateReplies(
     comments: CommentData[],
-    commentId: string,
+    commentId: string | null,
     newComment: CommentData,
     depth: number,
     maxDepth: number
   ): CommentData[] {
+    if (commentId === null) {
+      return [...comments, { ...newComment, replies: [] }];
+    }
+
     return comments.map((comment) => {
       if (comment.id === commentId && depth < maxDepth) {
         return {
@@ -104,7 +109,7 @@ const Comment = () => {
       <h4 className="heading4">Comments on this post</h4>
       {sending && (
         <div className="blog-content-comment-sending">
-          <h3>Submitting Reply...</h3>
+          <h3>Submitting...</h3>
         </div>
       )}
       {loading ? (
@@ -122,6 +127,8 @@ const Comment = () => {
               onReply={handleReply}
             />
           ))}
+
+          <LeaveCommentForm onReply={handleReply} />
         </>
       )}
     </div>

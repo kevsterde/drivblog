@@ -8,7 +8,7 @@ interface CommentProps {
   comment: CommentData;
   depth: number;
   maxDepth: number;
-  onReply: (commentId: string, content: string) => void;
+  onReply: (commentId: string | null, content: string) => void;
 }
 
 const CardComment = ({ comment, depth, maxDepth, onReply }: CommentProps) => {
