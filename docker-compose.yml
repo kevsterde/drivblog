@@ -1,5 +1,4 @@
 services:
- 
   laravel:
     container_name: blog-backend
     build: .
@@ -7,7 +6,7 @@ services:
       - ./blog-backend:/var/www/html
     ports:
       - 9000:80
-  
+
   mysql_db:
     image: mysql:latest
     environment:
@@ -16,8 +15,8 @@ services:
       MYSQL_USER: laravel_user
       MYSQL_PASSWORD: laravel_password
     ports:
-    - 3306:3306
-  
+      - 3306:3306
+
   phpmyadmin:
     image: phpmyadmin:latest
     ports:
@@ -25,13 +24,13 @@ services:
     environment:
       - PMA_ARBITRARY=1
 
-
   nextjs:
     build:
       context: ./blog-frontend
     volumes:
       - ./blog-frontend:/app
+      - /app/node_modules
     ports:
-      - "3001:3000" # Next.js port mapping
+      - "3000:3000" # Next.js port mapping
     depends_on:
       - laravel

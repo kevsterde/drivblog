@@ -3,8 +3,8 @@ setup:
 	@make up
 	@make composer-update
 	@make data
-	docker exec backend bash -c "cp .env.example .env"
-
+	docker exec blog-backend bash -c "cp .env.example .env"
+	start http://localhost:3000/
 build:
 	docker compose build --no-cache --force-rm
 stop: 
@@ -12,10 +12,10 @@ stop:
 up:
 	docker compose up -d
 composer-update:
-	docker exec backend bash -c "composer update"
+	docker exec blog-backend bash -c "composer update"
 data:
-	docker exec backend bash -c "php artisan migrate"
-	docker exec backend bash -c "php artisan db:seed"
-
+	docker exec blog-backend bash -c "php artisan migrate"
+	docker exec blog-backend bash -c "php artisan db:seed"
+	
 down:
 	docker compose down
