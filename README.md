@@ -24,11 +24,7 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    git clone https://github.com/kevinFE63/drivblog.git
    ```
-2. Install NextJS package
-   ```sh
-   cd blog-frontend && npm i && npm run dev && npm start
-   ```
-3. Setting Up (must be in root folder)
+2.  Setting Up (must be in root folder)
 
    ```sh
    make setup
@@ -37,6 +33,7 @@ _Below is an example of how you can instruct your audience on installing and set
    or if no Make
 
    ```sh
+   cd blog-frontend && npm i && npm run build && cd .. &&
    docker compose build --no-cache --force-rm &&
    docker compose up -d &&
    docker exec blog-backend bash -c "composer update" &&
