@@ -1,8 +1,4 @@
 setup:
-	cd blog-frontend
-	npm i 
-	npm run build 
-	cd ..
 	@make build
 	@make up
 	@make composer-update
