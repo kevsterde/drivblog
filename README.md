@@ -24,6 +24,12 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    git clone https://github.com/kevinFE63/drivblog.git
    ```
+
+   ```
+   cd blog-frontend &&
+   npm i && npm build &&
+   cd ..
+   ```
 2. Setting Up (must be in root folder)
 
 ```sh
