@@ -26,7 +26,7 @@ const Comment = () => {
       try {
         setLoading(true);
 
-        const response = await fetch("http://localhost:9000/api/comments");
+        const response = await fetch("http://localhost:9600/api/comments");
         const data = await response.json();
         console.log(data);
         setComments(data);
@@ -49,7 +49,7 @@ const Comment = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:9000/api/comments", {
+      const response = await fetch("http://localhost:9600/api/comments", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
