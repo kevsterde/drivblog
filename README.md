@@ -24,16 +24,21 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    git clone https://github.com/kevinFE63/drivblog.git
    ```
-2. Setting Up (must be in root folder)
+2. Set up the front end NEXT JS
+
+```sh
+cd blog-frontend && npm i && npm run build
+```
+
+3. Set up Docker Container using MAKE
 
 ```sh
 make setup
 ```
 
-or if no Make
+4. Set up Docker Manually
 
 ```sh
-cd blog-frontend && npm i && npm run build && cd .. &&
 docker compose build --no-cache --force-rm &&
 docker compose up -d &&
 docker exec blog-backend bash -c "composer update" &&

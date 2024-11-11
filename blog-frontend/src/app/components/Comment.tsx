@@ -26,7 +26,7 @@ const Comment = () => {
       try {
         setLoading(true);
 
-        const response = await fetch("http://localhost:9000/api/comments"); // Adjust the URL as needed
+        const response = await fetch("http://localhost:9000/api/comments");
         const data = await response.json();
         console.log(data);
         setComments(data);
@@ -41,6 +41,7 @@ const Comment = () => {
 
   const handleReply = async (commentId: string | null, content: string) => {
     setSending(true);
+
     const replyData = {
       parent_id: commentId,
       content,
